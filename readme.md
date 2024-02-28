@@ -17,6 +17,31 @@ An 8 week progression for a course on WordPress theme development. The course is
 - [WordPress Stack Exchange](https://wordpress.stackexchange.com/)
 - [WordPress Subreddit](https://www.reddit.com/r/Wordpress/)
 
+## Project development
+
+[Weeks 1-4: First Project (Small Blog)](#weeks-1-4-first-project-small-blog)
+
+This project will introduce students to WordPress theme development by creating a simple blog theme. The focus will be on the WordPress Loop, theme structure, and basic customization.
+
+[Weeks 5-8: Second Project (Netflix Site)](#weeks-5-8-second-project-netflix-site)
+
+This final project will build on the first project by introducing custom post types, taxonomies, and advanced custom fields. The goal is to create a faux Netflix site with films, TV shows, and genres.
+
+[Open-Ended Final Project Assignment: Enhancing the Netflix Site](#open-ended-final-project-assignment-enhancing-the-netflix-site)
+
+This will add more to the final project by allowing students to enhance the faux Netflix site with new features, functionalities, and content types.
+
+## Weekly breakdown
+
+- [Week 1: Introduction and Basic Setup](#week-1-introduction-and-basic-setup)
+- [Week 2: Theme Structure and Customization](#week-2-theme-structure-and-customization)
+- [Week 3: WordPress Loop and Theme Development](#week-3-wordpress-loop-and-theme-development)
+- [Week 4: Sidebar and Finalizing the Small Blog Project](#week-4-sidebar-and-finalizing-the-small-blog-project)
+- [Week 5: Planning and Custom Post Types](#week-5-planning-and-custom-post-types)
+- [Week 6: Taxonomy Loop and Advanced Custom Fields](#week-6-taxonomy-loop-and-advanced-custom-fields)
+- [Week 7: TV Shows](#week-7-tv-shows)
+- [Week 8: Finalizing and Review](#week-8-finalizing-and-review)
+
 ## Weeks 1-4: First Project (Small Blog)
 
 ### Week 1: Introduction and Basic Setup
