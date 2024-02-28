@@ -33,6 +33,7 @@ An 8 week progression for a course on WordPress theme development. The course is
 Place simple text inside `index.php`.
 
 ```php
+// inside index.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,6 +65,7 @@ body {
 Link the theme's stylesheet to `index.php` with `get_stylesheet_uri()`.
 
 ```php
+// inside index.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,6 +90,7 @@ Translation: "Get the URL of the current theme's stylesheet and output it here."
 - Hardcode the blog's homepage content and style it with CSS.
 
 ```php
+// inside index.php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,6 +157,7 @@ footer {
 - Customize the blog post layout with CSS. Focus on responsive design and typography.
 
 ```php
+// inside index.php
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <article>
             <h3><?php the_title(); ?></h3>
@@ -205,6 +209,7 @@ article p {
 - Create a post and a page in the WordPress dashboard and preview the changes.
 
 ```php
+// insert into single.php and page.php
 <?php get_header(); ?>
 <main>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
@@ -227,6 +232,7 @@ article p {
 - Why would using `bloginfo()` be better than hardcoding the blog's title and description?
 
 ```php
+// inside header.php
 <header>
     <h1><?php bloginfo( 'name' ); ?></h1>
     <p><?php bloginfo( 'description' ); ?></p>
@@ -305,6 +311,7 @@ wp_nav_menu( array(
 - Create a loop to display the latest posts in the sidebar.
 
 ```php
+// inside single.php
 <?php get_header(); ?>
     <main>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
