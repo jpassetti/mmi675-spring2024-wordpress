@@ -30,9 +30,14 @@ An 8 week progression for a course on WordPress theme development. The course is
 - Create an `index.php` file and a `style.css` file with the necessary theme information. Explain that the `style.css` file, specifically the theme header, is required for WordPress to recognize the theme.
 - Activate the theme and preview the changes.
 
+Place simple text inside `index.php`.
+
 ```php
+<!-- simple text placed inside index.php -->
 <h1>This is the newhouse-blog theme</h1>
 ```
+
+Include the theme header in `style.css`.
 
 ```css
 /*
@@ -47,7 +52,7 @@ body {
 }
 ```
 
-- Link the theme's stylesheet to `index.php` with `get_stylesheet_uri()`.
+Link the theme's stylesheet to `index.php` with `get_stylesheet_uri()`.
 
 ```php
 <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
