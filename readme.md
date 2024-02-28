@@ -33,8 +33,17 @@ An 8 week progression for a course on WordPress theme development. The course is
 Place simple text inside `index.php`.
 
 ```php
-<!-- simple text placed inside index.php -->
-<h1>This is the newhouse-blog theme</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Newhouse Blog</h1>
+</body>
+</html>
 ```
 
 Include the theme header in `style.css`.
@@ -55,7 +64,18 @@ body {
 Link the theme's stylesheet to `index.php` with `get_stylesheet_uri()`.
 
 ```php
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+</head>
+<body>
+    <h1>Newhouse Blog</h1>
+</body>
+</html>
 ```
 
 Translation: "Get the URL of the current theme's stylesheet and output it here."
