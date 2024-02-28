@@ -104,15 +104,15 @@ Translation: "Get the URL of the current theme's stylesheet and output it here."
         <h2>Latest Posts</h2>
         <article>
             <h3>Post Title</h3>
-            <p>Post Content</p>
+            <p>Post Excerpt</p>
         </article>
         <article>
             <h3>Post Title</h3>
-            <p>Post Content</p>
+            <p>Post Excerpt</p>
         </article>
         <article>
             <h3>Post Title</h3>
-            <p>Post Content</p>
+            <p>Post Excerpt</p>
         </article>
     </main>
     <footer>
@@ -156,8 +156,8 @@ footer {
 ```php
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <article>
-            <h2><?php the_title(); ?></h2>
-            <h3><?php the_date(); ?></h3>
+            <h3><?php the_title(); ?></h3>
+            <h4><?php the_date(); ?></h4>
             <?php the_excerpt(); ?>
             <p><a href="<?php the_permalink(); ?>">Read more</a></p>
     </article>
@@ -165,6 +165,35 @@ footer {
 <?php endwhile; else : ?>
 	<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
 <?php endif; ?>
+```
+
+```css
+/* style.css */
+h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+article {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+article h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+article h4 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+article p {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
 ```
 
 #### Session 2: Single Post and Page Templates
