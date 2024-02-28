@@ -233,10 +233,29 @@ article p {
 
 ```php
 // inside header.php
-<header>
-    <h1><?php bloginfo( 'name' ); ?></h1>
-    <p><?php bloginfo( 'description' ); ?></p>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+</head>
+<body>
+    <header>
+        <h1><?php bloginfo( 'name' ); ?></h1>
+        <p><?php bloginfo( 'description' ); ?></p>
+    </header>
+```
+
+```php
+// inside footer.php
+// Translation: "Get the name of the blog and output it here. Get the current year and output it here."
+    <footer>
+        <p><?php bloginfo( 'name' ); ?> &copy; <?php echo date( 'Y' ); ?></p>
+    </footer>
+</body>
+</html>
 ```
 
 - Introduction to featured images (also referred to as post thumnail). Create a `functions.php` file and add support for featured images.
