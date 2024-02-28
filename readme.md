@@ -201,7 +201,7 @@ article p {
 - Create `header.php` and `footer.php` files and include them in `index.php`.
 - Introduction to single post and page templates. Create `single.php` and `page.php` files.
 - Insert the WordPress Loop into `single.php` and `page.php` to display single post and page content.
-- Explain how the Wordpress Loop is multi-purpose and can be used in different contexts.
+- Explain how the Wordpress Loop is multi-purpose and can be used in different contexts. When used on the homepage, it displays multiple posts. When used on a single post or page, it displays the content of that post or page.
 - Create a post and a page in the WordPress dashboard and preview the changes.
 
 ```php
@@ -224,6 +224,7 @@ article p {
 - Review WordPress template tags, like `the_title()`, `the_date()`, `the_excerpt()`, and `the_permalink()`.
 - Edit the `header.php` with the blog's title and description using `bloginfo()`.
 - Read more about [bloginfo()](https://developer.wordpress.org/reference/functions/bloginfo/).
+- Why would using `bloginfo()` be better than hardcoding the blog's title and description?
 
 ```php
 <header>
@@ -299,12 +300,22 @@ wp_nav_menu( array(
 
 #### Session 1: Creats a sidebar to display latest posts
 
-- Create `sidebar.php` and include it in `index.php` and `single.php`.
+- Create `sidebar.php` and include it in `single.php`.
 - Include it with `get_sidebar()`.
 - Create a loop to display the latest posts in the sidebar.
 
 ```php
-<?php get_sidebar(); ?>
+<?php get_header(); ?>
+    <main>
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+            <h2><?php the_title(); ?></h2>
+            <?php the_content(); ?>
+    <?php endwhile; else : ?>
+        <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+    <?php endif; ?>
+    </main>
+    <?php get_sidebar(); ?>
+<?php get_footer(); ?>
 ```
 
 ```php
