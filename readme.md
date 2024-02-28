@@ -4,6 +4,19 @@
 
 An 8 week progression for a course on WordPress theme development. The course is designed for beginners with basic knowledge of HTML, CSS, and PHP. The goal is to provide a comprehensive understanding of WordPress theme development, including custom post types, advanced custom fields, and responsive design.
 
+## Resources
+
+- [Local WP](https://localwp.com/)
+- [WordPress Codex](https://codex.wordpress.org/)
+- [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/)
+- [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/)
+- [WordPress Developer Handbook](https://developer.wordpress.org/)
+- [WordPress Theme Developer Handbook](https://developer.wordpress.org/themes/)
+- [WordPress Community](https://make.wordpress.org/)
+- [WordPress.tv](https://wordpress.tv/)
+- [WordPress Stack Exchange](https://wordpress.stackexchange.com/)
+- [WordPress Subreddit](https://www.reddit.com/r/Wordpress/)
+
 ## Weeks 1-4: First Project (Small Blog)
 
 ### Week 1: Introduction and Basic Setup
@@ -11,16 +24,41 @@ An 8 week progression for a course on WordPress theme development. The course is
 #### Session 1: Introduction
 
 - Introduction to WordPress, themes, and the importance of local development environments.
-- Set up a local development environment with Local WP, install a WordPress site and login.
+- Set up a local development environment with [Local WP](https://localwp.com/), install a WordPress site and login.
 - Overview of WordPress dashboard, posts, pages, and initial theme setup.
 - Start the small blog project by creating an empty theme directory `/wp-content/themes/newhouse-blog`.
-- Create an index.php file and a style.css file with the necessary theme information.
+- Create an `index.php` file and a `style.css` file with the necessary theme information. Explain that the `style.css` file, specifically the theme header, is required for WordPress to recognize the theme.
 - Activate the theme and preview the changes.
+
+```php
+<h1>This is the newhouse-blog theme</h1>
+```
+
+```css
+/*
+Theme Name: Newhouse Blog
+Author: Your Name
+Description: A simple blog theme for learning WordPress theme development.
+Version: 1.0
+*/
+
+body {
+  background-color: yellow;
+}
+```
+
+- Link the theme's stylesheet to `index.php` with `get_stylesheet_uri()`.
+
+```php
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+```
+
+Translation: "Get the URL of the current theme's stylesheet and output it here."
 
 #### Session 2: Homepage
 
-- Introduction to the WordPress template hierarchy and the role of theme files.
-- Create a basic HTML structure for the blog's header, footer, and main content area for `index.php`.
+- Introduction to the [WordPress template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/) and the role of theme files.
+- Create a basic HTML structure for the blog's header, footer, and main content area inside `index.php`.
 - Style the blog with CSS, focusing on basic typography, spacing, colors, and layout.
 - Hardcode the blog's homepage content and style it with CSS.
 
@@ -30,7 +68,7 @@ An 8 week progression for a course on WordPress theme development. The course is
 
 - Introduction to the [WordPress Loop](https://codex.wordpress.org/The_Loop) and the role of the `index.php` file.
 - Create a basic loop to display blog posts on the homepage.
-- Customize the blog post layout with CSS and introduce the concept of responsive design.
+- Customize the blog post layout with CSS. Focus on responsive design and typography.
 
 ```php
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
@@ -48,10 +86,11 @@ An 8 week progression for a course on WordPress theme development. The course is
 
 #### Session 2: Single Post and Page Templates
 
-- Create header.php and footer.php files and include them in `index.php`.
+- Create `header.php` and `footer.php` files and include them in `index.php`.
 - Introduction to single post and page templates. Create `single.php` and `page.php` files.
 - Insert the WordPress Loop into `single.php` and `page.php` to display single post and page content.
 - Explain how the Wordpress Loop is multi-purpose and can be used in different contexts.
+- Create a post and a page in the WordPress dashboard and preview the changes.
 
 ```php
 <?php get_header(); ?>
@@ -71,7 +110,8 @@ An 8 week progression for a course on WordPress theme development. The course is
 #### Session 1: Template tags and featured images
 
 - Review WordPress template tags, like `the_title()`, `the_date()`, `the_excerpt()`, and `the_permalink()`.
-- Edit the header.php with the blog's title and description using `bloginfo()`.
+- Edit the `header.php` with the blog's title and description using `bloginfo()`.
+- Read more about [bloginfo()](https://developer.wordpress.org/reference/functions/bloginfo/).
 
 ```php
 <header>
@@ -80,7 +120,8 @@ An 8 week progression for a course on WordPress theme development. The course is
 </header>
 ```
 
-- Introduction to featured images. Create a `functions.php` file and add support for featured images.
+- Introduction to featured images (also referred to as post thumnail). Create a `functions.php` file and add support for featured images.
+- Read more about [the_post_thumbnail()](https://developer.wordpress.org/reference/functions/the_post_thumbnail/)
 
 ```php
 <?php
@@ -120,7 +161,7 @@ add_theme_support( 'post-thumbnails' );
 
 - Introduction to WordPress menus. Create a custom menu in the WordPress dashboard and display it in the theme.
 - Register a menu location in `functions.php`.
-- Add items to the menu from the WordPress dashboard.
+- Add items to the menu from the WordPress dashboard > Menus.
 - Display the menu in the theme's header with `wp_nav_menu()`.
 
 ```php
@@ -136,7 +177,7 @@ register_nav_menus( array(
 // inside header.php
 wp_nav_menu( array(
     'theme_location' => 'primary', // specify the menu location, as registered in functions.php
-    'container' => false, // remove the <div> container
+    'container' => false, // remove the default <div> container
     'menu_class' => 'menu' // add a custom class
 ) );
 ?>
@@ -146,10 +187,16 @@ wp_nav_menu( array(
 
 #### Session 1: Creats a sidebar to display latest posts
 
-- Create sidebar.php and include it in `index.php` and `single.php`.
+- Create `sidebar.php` and include it in `index.php` and `single.php`.
+- Include it with `get_sidebar()`.
 - Create a loop to display the latest posts in the sidebar.
 
 ```php
+<?php get_sidebar(); ?>
+```
+
+```php
+// inside sidebar.php
 <?php if ( have_posts() ) : ?>
     <aside>
         <h2>Latest Posts</h2>
@@ -163,6 +210,7 @@ wp_nav_menu( array(
 ```
 
 - Style the sidebar with CSS and make it responsive.
+- Explain the different between `main` and `sidebar`, specifically how they are used with SEO in mind.
 
 #### Session 2: Finalizing the Small Blog Project
 
@@ -330,14 +378,23 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 ### Week 8: Finalizing and Review
 
-- **Session 1:** Finalizing the faux Netflix site. Implementing final touches like search.php. Testing the site's responsiveness and making necessary adjustments.
-- **Session 2:** Course wrap-up. Discussing deployment, WordPress community resources, and ongoing learning opportunities. Review of best practices and Q&A session.
+#### Session 1:
+
+- Finalizing the faux Netflix site.
+- Implementing final touches like search.php.
+- Testing the site's responsiveness and making necessary adjustments.
+
+#### Session 2
+
+- Course wrap-up.
+- Discussing deployment, WordPress community resources, and ongoing learning opportunities.
+- Review of best practices and Q&A session.
 
 ### Open-Ended Final Project Assignment: Enhancing the Netflix Site
 
 #### Objective:
 
-Your task is to take the foundational Netflix site you've built and enhance it by adding new features, functionalities, and content types. Think about what makes streaming platforms engaging and how you can replicate these aspects in your project.
+Your task is to take the foundational Netflix site we've built and enhance it by adding new features, functionalities, and content types. Think about what makes streaming platforms engaging and how you can replicate these aspects in your project.
 
 #### Guidelines:
 
@@ -345,6 +402,8 @@ Your task is to take the foundational Netflix site you've built and enhance it b
 - **Planning:** Before you start coding, outline the features you want to add. Consider how these will integrate with your existing site structure. Plan your custom post types, taxonomies, fields, and any new page templates you might need.
 
 #### Implementation:
+
+You have the freedom to choose the features you want to add, but here are some ideas to get you started:
 
 - **People (Actors, Directors, etc.):** Create a custom post type for people involved in TV shows and films. Include custom fields for biographies, filmography, and possibly a connection to the TV shows or films they've worked on.
 - **Trailers:** Integrate trailers for your TV shows or films. This could involve adding a new field to your existing custom post types or creating a separate post type for trailers that can be linked to your content.
@@ -373,3 +432,5 @@ Write a brief report detailing your enhancements, the choices you made, and any 
 ### Conclusion
 
 Throughout the course, encourage students to experiment and explore WordPress features and functionalities beyond the scope of the lesson plans. This hands-on approach not only solidifies their understanding but also inspires creativity and problem-solving skills.
+
+By using Wordpress as a CMS, whether a publishing platform or a full-fledged web application, students will gain valuable experience in web development and content management. This course will provide a strong foundation for students to continue learning and growing in the field of web design and development.
