@@ -87,6 +87,64 @@ Translation: "Get the URL of the current theme's stylesheet and output it here."
 - Style the blog with CSS, focusing on basic typography, spacing, colors, and layout.
 - Hardcode the blog's homepage content and style it with CSS.
 
+```php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+</head>
+<body>
+    <header>
+    <h1>Newhouse Blog</h1>
+    </header>
+    <main>
+        <h2>Latest Posts</h2>
+        <article>
+            <h3>Post Title</h3>
+            <p>Post Content</p>
+        </article>
+        <article>
+            <h3>Post Title</h3>
+            <p>Post Content</p>
+        </article>
+        <article>
+            <h3>Post Title</h3>
+            <p>Post Content</p>
+        </article>
+    </main>
+    <footer>
+        <p>Copyright 2024 Newhouse Blog</p>
+    </footer>
+</body>
+</html>
+```
+
+```css
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+main {
+  padding: 1rem;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+```
+
 ### Week 2: Theme Structure and Customization
 
 #### Session 1: Blog Posts
